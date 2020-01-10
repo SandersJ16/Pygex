@@ -16,3 +16,6 @@ def test_pattern_with_wildcard():
     assert pygex.matches('cat', 'c.t')
     assert pygex.matches('cat', '.at')
 
+def test_pattern_with_asteriks_matches_none():
+    assert pygex.matches('ct', 'ca*t')
+
