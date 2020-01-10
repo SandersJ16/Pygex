@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 
 import pytest
-from ..pygex.engine import Engine
+from .. import pygex
 
 def test_literal_string_matches():
-    assert Engine.matches('cat', 'cat')
+    assert pygex.matches('cat', 'cat')
 
 def test_literal_string_match_failure():
-    assert not Engine.matches('cat', 'hat')
+    assert not pygex.matches('cat', 'hat')
 
 def test_literal_match_failure_different_case():
-    assert not Engine.matches('cat', 'cAt')
+    assert not pygex.matches('cat', 'cAt')
 
 def test_pattern_with_wildcard():
-    assert Engine.matches('cat', 'c.t')
-    assert Engine.matches('cat', '.at')
+    assert pygex.matches('cat', 'c.t')
+    assert pygex.matches('cat', '.at')
 
