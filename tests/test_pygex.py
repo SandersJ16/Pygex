@@ -19,3 +19,12 @@ def test_pattern_with_wildcard():
 def test_pattern_with_asteriks_matches_none():
     assert pygex.matches('ct', 'ca*t')
 
+def test_patterns_with_asteriks_matches_one():
+    assert pygex.matches('cat', 'ca*t')
+
+def test_patterns_with_asteriks_matches_multiple():
+    assert pygex.matches('caaat', 'ca*t')
+
+def test_patterns_with_asteriks_matches_with_following_matching_character():
+    assert pygex.matches('cat', 'ca*at')
+
