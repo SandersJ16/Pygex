@@ -17,11 +17,12 @@ def test_pattern_with_wildcard():
     assert pygex.matches('cat', '.at')
     assert pygex.matches('cat', 'ca.')
 
+def test_pattern_with_multiple_wildcards():
+    assert pygex.matches('c..', 'c..')
+    assert pygex.matches('cat', '...')
+
 def test_pattern_with_asteriks_matches_none():
     assert pygex.matches('ct', 'ca*t')
-
-def test_pattern_with_asteriks_and_extra_charachter_doesnt_match():
-    assert not pygex.matches('ct', 'ca*tt')
 
 def test_patterns_with_asteriks_matches_one():
     assert pygex.matches('cat', 'ca*t')
@@ -31,4 +32,13 @@ def test_patterns_with_asteriks_matches_multiple():
 
 def test_patterns_with_asteriks_matches_with_following_matching_character():
     assert pygex.matches('cat', 'ca*at')
+
+def test_pattern_with_asteriks_and_extra_charachter_doesnt_match():
+    assert not pygex.matches('ct', 'ca*tt')
+
+def test_pattern_with_multiple_stars():
+    assert pygex.matches('ccccatttt', 'c*at*')
+
+def test_pattern_with_multiple_stars_back_to_back():
+    assert pygex.matches('caaaatttt', 'ca*t*')
 
