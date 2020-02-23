@@ -77,15 +77,12 @@ def break_parts(pattern):
     return parts
 
 
-def compile(pattern): #.*c
+def compile(pattern):
     start_state = State()
     parts = break_parts(pattern)
     states = [start_state]
     for _ in range(len(parts)):
         states.append(State())
-    #end_state = State.end_state()
-    #states.append(end_state)
-
 
     parts_iter = iter(parts)
     states_iter = iter(states)
@@ -105,8 +102,8 @@ def compile(pattern): #.*c
 
 
 def add_transitions_to_state(state, parts, next_states):
-    part = next(parts)#T
-    next_state = next(next_states)#4
+    part = next(parts)
+    next_state = next(next_states)
     with suppress(StopIteration):
         while part.endswith('*'):
             char = part[0]

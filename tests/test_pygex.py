@@ -42,3 +42,6 @@ def test_pattern_with_multiple_stars():
 def test_pattern_with_multiple_stars_back_to_back():
     assert pygex.matches('caaaatttt', 'ca*t*')
 
+def test_pattern_with_multiple_stars_back_to_back_without_second_character():
+    assert pygex.matches('caaaa', 'ca*t*')
+
