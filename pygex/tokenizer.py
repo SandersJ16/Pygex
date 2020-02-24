@@ -7,7 +7,10 @@ def tokenize(pattern):
     tokens = []
     for part in pattern:
         if part in repetition_tokens:
-            tokens[-1] += part
+            try:
+                tokens[-1] += part
+            except IndexError:
+                raise InvalidRegexPattern()
         else:
             tokens.append(part)
 
@@ -15,4 +18,5 @@ def tokenize(pattern):
 
 
 
-
+class InvalidRegexPattern(Exception):
+    pass
